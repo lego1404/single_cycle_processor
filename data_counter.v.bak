@@ -1,0 +1,32 @@
+
+module pc_counter(rst, in_clk, data, data3, data2, data1, data0);
+
+input in_clk, rst;
+input [31:0] data;
+
+output [3:0] data3, data2, data1, data0;
+
+reg [3:0] data3, data2, data1, data0;
+
+always@(posedge in_clk or negedge rst)
+begin
+	if(!rst)
+	begin
+		data0 <=0;
+		data1 <=0;
+		data2 <=0;
+		data3 <=0;
+	end
+	else
+	
+
+	data3<= data[15:12];
+	data2<= data[11:8];
+	data1<= data[7:4];
+	data0<= data[3:0];
+
+
+
+end
+
+endmodule 

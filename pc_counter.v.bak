@@ -1,0 +1,40 @@
+
+module pc_counter(rst, in_clk, pc1, pc2);
+
+input in_clk, rst;
+
+output [3:0] pc1, pc2;
+
+reg [3:0] pc1, pc2, temp1, temp2;
+
+always@(posedge in_clk or negedge rst)
+begin
+	if(!rst)
+	begin
+		temp1<=0;
+		temp2<=0;
+		pc1<=0;
+		pc2<=0;
+	end
+	else
+	begin //pc increase by 4
+		if(temp1 > 12)
+		begin
+		temp1<=temp1-10; 
+		temp2<=temp2+1;
+		end
+		else
+		temp1<=temp1+4;
+		pc1<=temp1;
+		pc2<=temp2;
+
+	end
+
+
+
+
+
+
+end
+
+endmodule 

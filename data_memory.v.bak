@@ -1,0 +1,32 @@
+
+module data_memory (address, wdata, memread, memwrite, rdata);
+
+input [31:0] address,wdata;
+input memread, memwrite;
+output reg[31:0] rdata;
+
+
+reg [31:0] mem[0:63];
+
+
+
+initial
+begin
+$readmemb("memory.mem", mem);
+end
+
+always@(memread, memwrite)
+begin
+	//lw
+	if (memread==1&&memwrite==0)
+	rdata<= mem[address];
+	
+	//sw
+	else if(memread==0&&memwrite==1)
+	mem[address] <=wdata;
+
+
+end
+
+
+endmodule 
